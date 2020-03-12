@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Subtract Software
+{% endblock %}
+
+{% block main %}
+    <form action="/subtractSoftware" method="post">
+        <h6>Select Software to Remove</h6>
+        <div class="form-group">
+            <select class="custom-select form-control" id="software" name="software" placeholder="Select Software" required>
+                {% for software in softwareArr %}
+                    <option value={{software}}>{{software}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

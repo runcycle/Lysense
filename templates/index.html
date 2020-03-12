@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summary of Licenses
+{% endblock %}
+
+{% block main %}
+
+<h4>Installed Software</h4>
+    <table id="allSoftware" class="display" style="width:100%">
+        <tr>
+            <th>Brand</th>
+            <th>Software</th>
+            <th>Total Licenses</th>
+            <th>Remaining Licenses</th>
+        </tr>
+        {% for row in software %}
+        <tr>
+            <td>{{ row["brand"] }}</td>
+            <td>{{ row["software"] }}</td>
+            <td>{{ row["licensesAllowed"] }}</td>
+            <td>{{ row["licensesRemaining"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h4>Licenses</h4>
+    <table id="allLicenses" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Software</th>
+                <th>Serial Number</th>
+                <th>Version</th>
+                <th>Computer ID</th>
+                <th>Authorization Code</th>
+                <th>Date Installed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in licenses %}
+                <tr>
+                    <td>{{ row["software"] }}</td>
+                    <td>{{ row["serialNumber"] }}</td>
+                    <td>{{ row["version"] }}</td>
+                    <td>{{ row["computerName"] }}</td>
+                    <td>{{ row["authCode"] }}</td>
+                    <td>{{ row["date"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $("#allLicenses").DataTable({
+                paging: false
+            });
+        });
+
+        $(document).ready(function() {
+            $("#allSoftware").DataTable({
+                paging: false
+            });
+        });
+    </script>
+
+{% endblock %}

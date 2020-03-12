@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add a New License
+{% endblock %}
+
+{% block main %}
+    <form action="/addLicense" method="post">
+        <h6>First Select Software to Add License</h6>
+        <p>(Note - Please remove hyphens from all fields)</p>
+        <select class="custom-select form-control" id="software" name="software" placeholder="Select Software" required>
+            {% for software in softwareArr %}
+                <option value={{software}}>{{software}}</option>
+            {% endfor %}
+        </select>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="serialNumber" placeholder="Serial Number" type="number">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="version" placeholder="Version" type="number" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="computerName" placeholder="Computer Id" type="text" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="authCode" placeholder="Authorization Code" type="number" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}
